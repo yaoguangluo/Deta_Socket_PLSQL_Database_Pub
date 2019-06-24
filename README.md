@@ -1,4 +1,4 @@
-# 🚀 <<暂时100%(首创)个人著作权开源项目>>Deta quantum-field json PLSQL database integrated in deta VPCS http server. size 30KB / 量子碎片去死锁带binlog动态回滚的PLSQL数据库，启动50毫秒，100,000~4,000,000  QPS 注: http://tinos.qicp.vip/ Deta官方网站已经采用该数据库. 
+# 🚀 <<100%(首创)个人著作权开源项目>>Deta quantum-field json PLSQL database integrated in deta VPCS http server. size 30KB / 量子碎片去死锁带binlog动态回滚的PLSQL数据库，启动50毫秒，100,000~4,000,000  QPS 注: http://tinos.qicp.vip/ Deta官方网站已经采用该数据库. 
 ## 基于Deta官方网站所有实际功能 需要逐步完善 需求函数细节.
 <<非个人著作权的文件（原理思想引用，2次修改，借鉴使用，合作开发等）已迁移至如下项目>>
 https://github.com/yaoguangluo/Data_Processor/tree/master/DP
