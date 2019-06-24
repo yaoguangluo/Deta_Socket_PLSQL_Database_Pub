@@ -7,9 +7,10 @@ import cacheProcessor.CacheManager;
 import org.lyg.db.insert.imp.InsertRowsImp;
 import org.lyg.db.select.imp.SelectRowsImp;
 import org.lyg.db.update.imp.UpdateRowsImp;
-import org.lyg.vpc.view.Usr;
 import org.lyg.vpc.view.UsrFull;
-import org.lyg.vpc.view.UsrToken;
+
+import MD5Processor.Usr;
+import MD5Processor.UsrToken;
 
 public class LoginDAOImpl {
 	//	@Autowired

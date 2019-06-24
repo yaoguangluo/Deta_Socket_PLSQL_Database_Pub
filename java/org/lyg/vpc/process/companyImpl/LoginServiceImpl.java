@@ -7,8 +7,9 @@ import org.json.JSONObject;
 import org.lyg.common.utils.StringUtil;
 import org.lyg.common.utils.TokenUtil;
 import org.lyg.vpc.process.factoryImpl.LoginDAOImpl;
-import org.lyg.vpc.view.Usr;
-import org.lyg.vpc.view.UsrToken;
+
+import MD5Processor.Usr;
+import MD5Processor.UsrToken;
 public class LoginServiceImpl {
 
 	//	@Autowired

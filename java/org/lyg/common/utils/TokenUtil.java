@@ -1,9 +1,10 @@
 package org.lyg.common.utils;
 
-import org.lyg.vpc.view.Token;
-import org.lyg.vpc.view.Usr;
-import org.lyg.vpc.view.UsrToken;
 import java.util.Date;
+
+import MD5Processor.Token;
+import MD5Processor.Usr;
+import MD5Processor.UsrToken;
 
 public class TokenUtil {
 	//引用了中科大的筛子非对称加密论文思想，这里标注下，
