@@ -19,7 +19,8 @@ import org.lyg.db.plsql.imp.ProcessRelationPLSQL;
 import org.lyg.db.reflection.Spec;
 @SuppressWarnings({"unused", "unchecked"})
 public class UpdateJoinRowsImp {
-	public static Object updateRowsByAttributesOfJoinCondition(Map<String, Object> object, boolean mod) throws IOException {
+	public static Object updateRowsByAttributesOfJoinCondition(Map<String, Object> object
+			, boolean mod) throws IOException {
 		if(!object.containsKey("recordRows")) {
 			Map<String, Boolean> recordRows = new ConcurrentHashMap<>();
 			object.put("recordRows", recordRows);
@@ -29,7 +30,8 @@ public class UpdateJoinRowsImp {
 		String objectType = "";
 		List<Map<String, Object>> output = new ArrayList<>();
 		//锁定数据库
-		String DBPath = CacheManager.getCacheInfo("DBPath").getValue().toString() + "/" + object.get("joinBaseName").toString();
+		String DBPath = CacheManager.getCacheInfo("DBPath").getValue().toString() + "/" 
+		+ object.get("joinBaseName").toString();
 		//锁定表
 		File fileDBPath = new File(DBPath);
 		if (fileDBPath.isDirectory()) {
@@ -42,7 +44,8 @@ public class UpdateJoinRowsImp {
 					//读取列数据格式
 					String[] fileList = fileDBTableCulumn.list();
 					for(int i=0; i<fileList.length; i++) {
-						File readDBTableSpecCulumnFile = new File(DBTableCulumnPath + "/" + fileList[0] + "/value.lyg");
+						File readDBTableSpecCulumnFile = new File(DBTableCulumnPath + "/" 
+					+ fileList[0] + "/value.lyg");
 						BufferedReader reader = new BufferedReader(new FileReader(readDBTableSpecCulumnFile));  
 						String tempString = null;
 						while ((tempString = reader.readLine()) != null) {  

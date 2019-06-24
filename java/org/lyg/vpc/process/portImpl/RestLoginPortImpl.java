@@ -18,16 +18,19 @@ public class RestLoginPortImpl {
 		return output;
 	}
 
-	public static Map<String, Object> register(String uEmail, String uEmailEnsure, String uName, String uPassword,
+	public static Map<String, Object> register(String uEmail, String uEmailEnsure
+			, String uName, String uPassword,
 			String uPassWDEnsure, String uAddress, String uPhone, String uWeChat,
 			String uQq, String uAge, String uSex) throws Exception {
-		Map<String, Object> output = TransactionDelegate.transactionRegister(uEmail, uEmailEnsure, uName, uPassword,
+		Map<String, Object> output = TransactionDelegate.transactionRegister(uEmail
+				, uEmailEnsure, uName, uPassword,
 				uPassWDEnsure, uAddress, uPhone, uWeChat,
 				uQq, uAge, uSex);
 		return output;
 	}
 
-	public static Map<String, Object> change(String uEmail, String uChange, String uChangeEnsure, String uToken,
+	public static Map<String, Object> change(String uEmail, String uChange
+			, String uChangeEnsure, String uToken,
 			String uPassword) throws IOException {
 		return null;
 	}
@@ -36,7 +39,8 @@ public class RestLoginPortImpl {
 		return null;
 	}
 
-	public static Map<String, Object> checkStatus(String token) throws NumberFormatException, JSONException, Exception {
+	public static Map<String, Object> checkStatus(String token) throws NumberFormatException
+	, JSONException, Exception {
 		Map<String, Object> output = new HashMap<String, Object>();
 		String checkStatus = LoginServiceImpl.checkTokenStatusAndGetLevel(token, "level", output);
 		if(checkStatus.contains("invalid")) {

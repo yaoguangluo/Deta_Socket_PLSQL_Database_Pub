@@ -32,7 +32,8 @@ public class RestDBSelectImpl {
 		return output;
 	}
 
-	public static Map<String, Object> selectRowsByTablePath(String tablePath, String pageBegin, String pageEnd, String direction
+	public static Map<String, Object> selectRowsByTablePath(String tablePath, String pageBegin
+			, String pageEnd, String direction
 			, String token, String email, String password, String auth) throws Exception {
 		Map<String, Object> output = new HashMap<String, Object>();
 		if(token != null && !token.equalsIgnoreCase("")){
@@ -55,8 +56,10 @@ public class RestDBSelectImpl {
 			return output;
 		}	
 
-		//		if(CacheManager.getCacheInfo(tablePath + ":" + pageBegin + ":" + pageEnd + ":" + direction) != null) {
-		//			output = (Map<String, Object>)(CacheManager.getCacheInfo(tablePath + ":" + pageBegin + ":" + pageEnd + ":" + direction).getValue());
+		//		if(CacheManager.getCacheInfo(tablePath + ":" + pageBegin + ":" + pageEnd 
+		//+ ":" + direction) != null) {
+		//			output = (Map<String, Object>)(CacheManager.getCacheInfo(tablePath 
+		//+ ":" + pageBegin + ":" + pageEnd + ":" + direction).getValue());
 		//			return output;
 		//		} 
 		output = SelectRowsImp.selectRowsByTablePath(tablePath, pageBegin, pageEnd, direction);

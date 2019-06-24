@@ -14,12 +14,16 @@ public class ForwardVision {
 	public static void forwardToRestMap(Socket socket) {
 	}
 
-	public static void getForwardType(VPCSRequest vPCSRequest, VPCSResponse vPCSResponse) throws IOException {
+	public static void getForwardType(VPCSRequest vPCSRequest
+			, VPCSResponse vPCSResponse) throws IOException {
 		if(vPCSRequest.getRequestIsRest()){
 			String filePath = VPC.getFilePath(vPCSRequest.getRequestLink());
-			if(filePath.contains(StableData.FILE_TTF)||filePath.contains(StableData.FILE_EOT)
-					||filePath.contains(StableData.FILE_SVG)||filePath.contains(StableData.FILE_WOFF)
-					||filePath.contains(StableData.FILE_WOFF2)||filePath.contains(StableData.FILE_OTF)){
+			if(filePath.contains(StableData.FILE_TTF)
+					||filePath.contains(StableData.FILE_EOT)
+					||filePath.contains(StableData.FILE_SVG)
+					||filePath.contains(StableData.FILE_WOFF)
+					||filePath.contains(StableData.FILE_WOFF2)
+					||filePath.contains(StableData.FILE_OTF)){
 				String code = VPC.getCode(filePath);
 				vPCSRequest.setRequestFilePath(filePath);
 				vPCSRequest.setRequestFileCode(code);
@@ -68,7 +72,8 @@ public class ForwardVision {
 		}	
 	}
 
-	public static void forwardToRestMap(VPCSRequest vPCSRequest, VPCSResponse vPCSResponse) throws Exception {
+	public static void forwardToRestMap(VPCSRequest vPCSRequest
+			, VPCSResponse vPCSResponse) throws Exception {
 		if(null == vPCSRequest || null == vPCSRequest.getRequestForwardType()){
 			vPCSResponse.return404();
 			return;

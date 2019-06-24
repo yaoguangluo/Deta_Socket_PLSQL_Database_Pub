@@ -28,7 +28,8 @@ public class ProcessGetCulumnsPLSQL {
 					for(int i = 1; i < getCulumnsValueArray.length; i++) {
 						String[] sets = getCulumnsValueArray[i].split("\\|");
 						if(null != sets && ((Map<String, Object>)row.get("rowValue")).containsKey(sets[0])) {
-							Map<String, Object> cell = (Map<String, Object>)((Map<String, Object>)row.get("rowValue")).get(sets[0]);
+							Map<String, Object> cell 
+							= (Map<String, Object>)((Map<String, Object>)row.get("rowValue")).get(sets[0]);
 							if(1 == sets.length) {
 								rowValue.put(sets[0], cell);
 								continue NextCell;

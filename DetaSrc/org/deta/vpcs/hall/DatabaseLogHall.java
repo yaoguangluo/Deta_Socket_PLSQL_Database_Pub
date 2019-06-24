@@ -48,7 +48,8 @@ public class DatabaseLogHall {
 		try {
 			fw = new FileWriter(logCurrentFilePath, true);
 			fw.write("\n\r\n");
-			fw.write(new String(GzipUtil.compress(logString.getBytes(StableData.CHARSET_UTF8)), StableData.CHARSET_UTF8));
+			fw.write(new String(GzipUtil.compress(logString.getBytes(StableData.CHARSET_UTF8))
+					, StableData.CHARSET_UTF8));
 			//	fw.write(logString);
 			fw.close();
 		} catch (IOException e) {
@@ -87,7 +88,8 @@ public class DatabaseLogHall {
 		String tempString;
 		while ((tempString = reader.readLine()) != null) {
 			//解gzip压缩并执行数据库恢复
-			tempString = new String(GzipUtil.uncompress(tempString.getBytes(StableData.CHARSET_UTF8)), StableData.CHARSET_UTF8);
+			tempString = new String(GzipUtil.uncompress(tempString.getBytes(StableData.CHARSET_UTF8))
+					, StableData.CHARSET_UTF8);
 			long currentTime =Long.valueOf(tempString.split("@:")[1]);
 			if(currentTime < time) {//逐条恢复到点。
 				ExecPLSQLImp.ExecPLSQL(tempString.split("@:")[3], true);

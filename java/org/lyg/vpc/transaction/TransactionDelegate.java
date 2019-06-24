@@ -26,7 +26,8 @@ public class TransactionDelegate {
 		Token token = TokenUtil.getNewTokenFromUsrAndUsrToken(usr, usrToken);
 		String json = new Gson().toJson(token);
 		String jsonToken = StringUtil.encode(json);
-		LoginServiceImpl.updateUsrTokenByUId(usr.getuId(), token.getuKey(), password, token.getuTime()/1000);
+		LoginServiceImpl.updateUsrTokenByUId(usr.getuId(), token.getuKey()
+				, password, token.getuTime()/1000);
 		Map<String, Object> out = new HashMap<>();
 		out.put("userToken", jsonToken);
 		out.put("userEmail", uEmail);
@@ -34,9 +35,9 @@ public class TransactionDelegate {
 		return out;
 	}
 
-	public static Map<String, Object> transactionRegister(String uEmail, String uEmailEnsure, String uName, String uPassword,
-			String uPassWDEnsure, String uAddress, String uPhone, String uWeChat, String uQq, String uAge,
-			String uSex) throws Exception {
+	public static Map<String, Object> transactionRegister(String uEmail, String uEmailEnsure
+			, String uName, String uPassword, String uPassWDEnsure, String uAddress
+			, String uPhone, String uWeChat, String uQq, String uAge,String uSex) throws Exception {
 		Usr usr = LoginServiceImpl.findUsrByUEmail(uEmail);
 		if(usr.getuEmail()!=null) {
 			Map<String, Object> out = new HashMap<>();

@@ -22,7 +22,8 @@ import org.lyg.db.plsql.imp.ProcessGetCulumnsPLSQL;
 import org.lyg.db.reflection.Spec;
 @SuppressWarnings({ "unused", "unchecked" })
 public class SelectRowsImp {
-	public static List<Map<String, Object>> selectRowsByAttribute(String currentDB, String tableName, String culmnName, Object value) throws IOException{
+	public static List<Map<String, Object>> selectRowsByAttribute(String currentDB
+			, String tableName, String culmnName, Object value) throws IOException{
 		if(value==null) {
 			value="";
 		}
@@ -81,9 +82,11 @@ public class SelectRowsImp {
 															continue NextFile;
 														}
 														String DBTableCulumnIndexPath = DBTableRowIndexPath + "/" + culumn;	
-														File readDBTableCulumnIndexPathFile = new File(DBTableCulumnIndexPath);
+														File readDBTableCulumnIndexPathFile 
+														= new File(DBTableCulumnIndexPath);
 														if (readDBTableRowIndexCulumnFile.isDirectory()) {
-															reader = new BufferedReader(new FileReader(readDBTableCulumnIndexPathFile + "/" + "value.lyg"));  
+															reader = new BufferedReader(
+																	new FileReader(readDBTableCulumnIndexPathFile + "/" + "value.lyg"));  
 															temp="";
 															while ((tempString = reader.readLine()) != null) {
 																temp += tempString;
@@ -109,7 +112,8 @@ public class SelectRowsImp {
 	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
 		try {
-			new SelectRowsImp().selectRowsByAttribute("backend", "login", "usr_name", "yaoguangluo");
+			new SelectRowsImp().selectRowsByAttribute("backend", "login"
+					, "usr_name", "yaoguangluo");
 			// deletefile("D:/file");
 		} catch (FileNotFoundException ex) {
 		} catch (IOException ex) {
@@ -117,7 +121,8 @@ public class SelectRowsImp {
 		System.out.println("ok");
 	}
 
-	public static Map<String, Object> selectRowsByTablePath(String tablePath, String pageBegin, String pageEnd, String direction) throws IOException {
+	public static Map<String, Object> selectRowsByTablePath(String tablePath, String pageBegin
+			, String pageEnd, String direction) throws IOException {
 		Map<String, Object> output = new HashMap<>();
 		int totalPages = 0;
 		output.put("tablePath", tablePath);
@@ -216,7 +221,8 @@ public class SelectRowsImp {
 		String objectType = "";
 		List<Map<String, Object>> output = new ArrayList<>();
 		//锁定数据库
-		String DBPath = CacheManager.getCacheInfo("DBPath").getValue().toString() + "/" + object.get("baseName").toString();
+		String DBPath = CacheManager.getCacheInfo("DBPath").getValue().toString() + "/" 
+		+ object.get("baseName").toString();
 		//锁定表
 		File fileDBPath = new File(DBPath);
 		if (fileDBPath.isDirectory()) {
@@ -229,7 +235,8 @@ public class SelectRowsImp {
 					//读取列数据格式
 					String[] fileList = fileDBTableCulumn.list();
 					for(int i=0; i<fileList.length; i++) {
-						File readDBTableSpecCulumnFile = new File(DBTableCulumnPath + "/" + fileList[0]+"/value.lyg");
+						File readDBTableSpecCulumnFile = new File(DBTableCulumnPath + "/" 
+					+ fileList[0]+"/value.lyg");
 						BufferedReader reader = new BufferedReader(new FileReader(readDBTableSpecCulumnFile));  
 						String tempString = null;
 						while ((tempString = reader.readLine()) != null) {  
@@ -277,7 +284,8 @@ public class SelectRowsImp {
 			boolean limitMap = type.equalsIgnoreCase("limit")?true:false;
 			for(int i = 2; i < aggregationValueArray.length; i++) {
 				String[] sets = aggregationValueArray[i].split("\\|");
-				String DBPath = CacheManager.getCacheInfo("DBPath").getValue().toString() + "/" + object.get("baseName").toString();
+				String DBPath = CacheManager.getCacheInfo("DBPath").getValue().toString() 
+						+ "/" + object.get("baseName").toString();
 				String dBTablePath = DBPath + "/" + object.get("tableName").toString();
 				if(limitMap) {
 					ProcessAggregationPLSQL.processAggregationLimitMap(sets, obj);

@@ -18,7 +18,8 @@ import java.util.Map;
 
 public class RestControllerPortImpl {
 
-	public static Map<String, Object> startResults(int aa, String token, String auth) throws NumberFormatException, JSONException, Exception {
+	public static Map<String, Object> startResults(int aa, String token, String auth)
+			throws NumberFormatException, JSONException, Exception {
 		Map<String, Object> result = new HashMap<String, Object>();
 		String checkStatus = LoginServiceImpl.checkTokenStatus(token, "common");
 		if(checkStatus.contains("invalid")&&(auth.contains("1"))) {
@@ -71,7 +72,8 @@ public class RestControllerPortImpl {
 		 */
 	}
 
-	public static Map<String, Object> startResultsBb(int bb, String token, String auth) throws NumberFormatException, JSONException, Exception {
+	public static Map<String, Object> startResultsBb(int bb, String token, String auth) 
+			throws NumberFormatException, JSONException, Exception {
 		Map<String, Object> output = new HashMap<>();
 		String checkStatus = LoginServiceImpl.checkTokenStatus(token, "common");
 		if(checkStatus.contains("invalid")&&(auth.contains("1"))) {

@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Map;
 @SuppressWarnings({"unused","unchecked"})
 public class ProcessRelationPLSQL {
-	public static void processAndMap(String[] sets, List<Map<String, Object>> obj, List<Map<String, Object>> joinObj
+	public static void processAndMap(String[] sets, List<Map<String, Object>> obj
+			, List<Map<String, Object>> joinObj
 			, Map<String, Object> object, List<Map<String, Object>> newObj) {
 		List<Map<String, Object>> newObjTemp = new ArrayList<>();
 		Iterator<Map<String, Object>> iterator = newObj.iterator(); 
@@ -79,8 +80,10 @@ public class ProcessRelationPLSQL {
 		}
 	}
 
-	public static void processOrMap(String[] sets, List<Map<String, Object>> obj, List<Map<String, Object>> joinObj
-			, Map<String, Object> object, List<Map<String, Object>> newObj, Map<String, Boolean> findinNewObj) {
+	public static void processOrMap(String[] sets, List<Map<String, Object>> obj
+			, List<Map<String, Object>> joinObj
+			, Map<String, Object> object, List<Map<String, Object>> newObj
+			, Map<String, Boolean> findinNewObj) {
 		Iterator<Map<String, Object>> iterator = obj.iterator(); 
 		int count = 0;
 		while(iterator.hasNext()) {

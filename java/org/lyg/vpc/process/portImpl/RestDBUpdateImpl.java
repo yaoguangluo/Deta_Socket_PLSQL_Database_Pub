@@ -7,8 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RestDBUpdateImpl {
-	public static Map<String, Object> updateRowByTablePathAndIndex(String tablePath, String pageIndex,
-			String culumnOfUpdateRow, String token, String email, String password, String auth) throws Exception {
+	public static Map<String, Object> updateRowByTablePathAndIndex(String tablePath
+			, String pageIndex,String culumnOfUpdateRow, String token, String email
+			, String password, String auth) throws Exception {
 		Map<String, Object> output = new HashMap<String, Object>();
 		if(token != null && !token.equalsIgnoreCase("")){
 			String checkStatus = LoginServiceImpl.checkTokenStatus(token, "level");

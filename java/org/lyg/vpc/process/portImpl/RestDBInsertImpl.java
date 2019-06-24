@@ -8,7 +8,8 @@ import java.util.Map;
 
 public class RestDBInsertImpl {
 	public static Map<String, Object> insertRowByTablePath(String tablePath, String pageIndex
-			, String culumnOfNewRow, String token, String email, String password, String auth) throws Exception {
+			, String culumnOfNewRow, String token, String email, String password
+			, String auth) throws Exception {
 		Map<String, Object> output = new HashMap<String, Object>();
 		if(token != null && !token.equalsIgnoreCase("")){
 			String checkStatus = LoginServiceImpl.checkTokenStatus(token, "common");
@@ -35,8 +36,9 @@ public class RestDBInsertImpl {
 		return output;
 	}
 
-	public static Map<String, Object> insertRowByBaseName(String baseName, String tableName, String culumnOfNewRow,
-			String token, String email, String password, String auth) throws Exception {
+	public static Map<String, Object> insertRowByBaseName(String baseName, String tableName
+			, String culumnOfNewRow, String token, String email, String password
+			, String auth) throws Exception {
 		Map<String, Object> output = new HashMap<String, Object>();
 		String checkStatus = LoginServiceImpl.checkRightsStatus(email, password, "DB");
 		if(checkStatus.contains("invalid")) {

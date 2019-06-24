@@ -15,7 +15,8 @@ import org.lyg.db.reflection.Row;
 import org.lyg.db.reflection.Table;
 @SuppressWarnings({ "unused", "unchecked"})
 public class ProcessConditionPLSQL {
-	public static void processCache(String[] sets, List<Map<String, Object>> output, String tableName, String baseName, Map<String, Object> object) {
+	public static void processCache(String[] sets, List<Map<String, Object>> output
+			, String tableName, String baseName, Map<String, Object> object) {
 		Table table = DetaDBBufferCacheManager.db.getBase(baseName).getTable(tableName);
 		Iterator<String> iterator = table.getRows().keySet().iterator(); 
 		int rowindex=0;
@@ -27,8 +28,10 @@ public class ProcessConditionPLSQL {
 			cell.setCellValue(rowIndex.replace("row", ""));
 			row.putCell("Index", cell);
 			if(sets[1].equalsIgnoreCase("<")||sets[1].equalsIgnoreCase("-lt")) {
-				double rowCellFromBigDecimal = new BigDecimal(row.getCell(sets[0]).getCellValue().toString()).doubleValue();
-				if(rowCellFromBigDecimal < new BigDecimal(sets[2]).doubleValue() && row.containsCell("is_delete_0")) {
+				double rowCellFromBigDecimal = new BigDecimal(row.getCell(sets[0])
+						.getCellValue().toString()).doubleValue();
+				if(rowCellFromBigDecimal < new BigDecimal(sets[2]).doubleValue() 
+						&& row.containsCell("is_delete_0")) {
 					if(!((Map<Integer, Boolean>)(object.get("recordRows"))).containsKey(count)) {
 						output.add(rowToRowMap(row));
 						Map<Integer, Boolean> recordRows = (Map<Integer, Boolean>) object.get("recordRows");
@@ -38,8 +41,10 @@ public class ProcessConditionPLSQL {
 			}
 			if(sets[1].equalsIgnoreCase("<=")||sets[1].equalsIgnoreCase("=<")
 					||sets[1].equalsIgnoreCase("-lte")) {
-				double rowCellFromBigDecimal = new BigDecimal(row.getCell(sets[0]).getCellValue().toString()).doubleValue();
-				if(rowCellFromBigDecimal<=  new BigDecimal(sets[2]).doubleValue() && row.containsCell("is_delete_0")) {
+				double rowCellFromBigDecimal = new BigDecimal(row.getCell(sets[0])
+						.getCellValue().toString()).doubleValue();
+				if(rowCellFromBigDecimal<=  new BigDecimal(sets[2]).doubleValue() 
+						&& row.containsCell("is_delete_0")) {
 					if(!((Map<Integer, Boolean>)(object.get("recordRows"))).containsKey(count)) {
 						output.add(rowToRowMap(row));
 						Map<Integer, Boolean> recordRows = (Map<Integer, Boolean>) object.get("recordRows");
@@ -47,9 +52,12 @@ public class ProcessConditionPLSQL {
 					}
 				}	
 			}
-			if(sets[1].equalsIgnoreCase("==")||sets[1].equalsIgnoreCase("=")||sets[1].equalsIgnoreCase("===")) {
-				double rowCellFromBigDecimal = new BigDecimal(row.getCell(sets[0]).getCellValue().toString()).doubleValue();
-				if(rowCellFromBigDecimal ==  new BigDecimal(sets[2]).doubleValue() && row.containsCell("is_delete_0")) {
+			if(sets[1].equalsIgnoreCase("==")||sets[1].equalsIgnoreCase("=")
+					||sets[1].equalsIgnoreCase("===")) {
+				double rowCellFromBigDecimal = new BigDecimal(row.getCell(sets[0])
+						.getCellValue().toString()).doubleValue();
+				if(rowCellFromBigDecimal ==  new BigDecimal(sets[2]).doubleValue() 
+						&& row.containsCell("is_delete_0")) {
 					if(!((Map<Integer, Boolean>)(object.get("recordRows"))).containsKey(count)) {
 						output.add(rowToRowMap(row));
 						Map<Integer, Boolean> recordRows = (Map<Integer, Boolean>) object.get("recordRows");
@@ -59,8 +67,10 @@ public class ProcessConditionPLSQL {
 			}
 			if(sets[1].equalsIgnoreCase(">=")||sets[1].equalsIgnoreCase("=>") 
 					||sets[1].equalsIgnoreCase("-gte")) {
-				double rowCellFromBigDecimal = new BigDecimal(row.getCell(sets[0]).getCellValue().toString()).doubleValue();
-				if(rowCellFromBigDecimal >= new BigDecimal(sets[2]).doubleValue() && row.containsCell("is_delete_0")) {
+				double rowCellFromBigDecimal = new BigDecimal(row.getCell(sets[0])
+						.getCellValue().toString()).doubleValue();
+				if(rowCellFromBigDecimal >= new BigDecimal(sets[2]).doubleValue() 
+						&& row.containsCell("is_delete_0")) {
 					if(!((Map<Integer, Boolean>)(object.get("recordRows"))).containsKey(count)) {
 						output.add(rowToRowMap(row));
 						Map<Integer, Boolean> recordRows = (Map<Integer, Boolean>) object.get("recordRows");
@@ -69,8 +79,10 @@ public class ProcessConditionPLSQL {
 				}	
 			}
 			if(sets[1].equalsIgnoreCase(">")||sets[1].equalsIgnoreCase("-gt")) {
-				double rowCellFromBigDecimal = new BigDecimal(row.getCell(sets[0]).getCellValue().toString()).doubleValue();
-				if(rowCellFromBigDecimal > new BigDecimal(sets[2]).doubleValue() && row.containsCell("is_delete_0")) {
+				double rowCellFromBigDecimal = new BigDecimal(row.getCell(sets[0])
+						.getCellValue().toString()).doubleValue();
+				if(rowCellFromBigDecimal > new BigDecimal(sets[2]).doubleValue() 
+						&& row.containsCell("is_delete_0")) {
 					if(!((Map<Integer, Boolean>)(object.get("recordRows"))).containsKey(count)) {
 						output.add(rowToRowMap(row));
 						Map<Integer, Boolean> recordRows = (Map<Integer, Boolean>) object.get("recordRows");
@@ -79,8 +91,10 @@ public class ProcessConditionPLSQL {
 				}	
 			}
 			if(sets[1].equalsIgnoreCase("!=")||sets[1].equalsIgnoreCase("=!")) {
-				double rowCellFromBigDecimal = new BigDecimal(row.getCell(sets[0]).getCellValue().toString()).doubleValue();
-				if(rowCellFromBigDecimal != new BigDecimal(sets[2]).doubleValue() && row.containsCell("is_delete_0")) {
+				double rowCellFromBigDecimal = new BigDecimal(row.getCell(sets[0])
+						.getCellValue().toString()).doubleValue();
+				if(rowCellFromBigDecimal != new BigDecimal(sets[2]).doubleValue() 
+						&& row.containsCell("is_delete_0")) {
 					if(!((Map<Integer, Boolean>)(object.get("recordRows"))).containsKey(count)) {
 						output.add(rowToRowMap(row));
 						Map<Integer, Boolean> recordRows = (Map<Integer, Boolean>) object.get("recordRows");
@@ -243,7 +257,8 @@ public class ProcessConditionPLSQL {
 		output.addAll(outputTemp);
 	}
 
-	public static void processTable(String[] sets, List<Map<String, Object>> output, String DBTablePath, Map<String, Object> object) throws IOException {
+	public static void processTable(String[] sets, List<Map<String, Object>> output
+			, String DBTablePath, Map<String, Object> object) throws IOException {
 		String DBTableRowsPath = DBTablePath + "/rows";	
 		File fileDBTableRowsPath = new File(DBTableRowsPath);
 		if (fileDBTableRowsPath.isDirectory()) {
@@ -264,7 +279,8 @@ public class ProcessConditionPLSQL {
 						String DBTableRowIndexCulumnPath = DBTableRowIndexPath + "/" + sets[0];	
 						File readDBTableRowIndexCulumnFile = new File(DBTableRowIndexCulumnPath);
 						if(readDBTableRowIndexCulumnFile.isDirectory()) {
-							BufferedReader reader = new BufferedReader(new FileReader(readDBTableRowIndexCulumnFile + "/" + "value.lyg"));  
+							BufferedReader reader = new BufferedReader
+									(new FileReader(readDBTableRowIndexCulumnFile + "/" + "value.lyg"));  
 							String temp = "";
 							String tempString = "";
 							while ((tempString = reader.readLine()) != null) {
@@ -272,9 +288,11 @@ public class ProcessConditionPLSQL {
 							}
 							reader.close();
 							if(sets[1].equalsIgnoreCase("<")||sets[1].equalsIgnoreCase("-lt")) {
-								if(new BigDecimal(temp.toString()).doubleValue() < new BigDecimal(sets[2].toString()).doubleValue()) {	
+								if(new BigDecimal(temp.toString()).doubleValue() 
+										< new BigDecimal(sets[2].toString()).doubleValue()) {	
 									if(!((Map<Integer, Boolean>)(object.get("recordRows"))).containsKey(count)) {
-										processkernel(row, readDBTableRowIndexCulumnFile, readDBTableRowIndexCulumnFile, reader
+										processkernel(row, readDBTableRowIndexCulumnFile
+												, readDBTableRowIndexCulumnFile, reader
 												, row, output, row, rowMap);
 										Map<Integer, Boolean> recordRows = (Map<Integer, Boolean>) object.get("recordRows");
 										recordRows.put(count, true);
@@ -283,19 +301,24 @@ public class ProcessConditionPLSQL {
 							}
 							if(sets[1].equalsIgnoreCase("<=")||sets[1].equalsIgnoreCase("=<")
 									||sets[1].equalsIgnoreCase("-lte")) {
-								if(new BigDecimal(temp.toString()).doubleValue() <= new BigDecimal(sets[2].toString()).doubleValue()) {
+								if(new BigDecimal(temp.toString()).doubleValue() 
+										<= new BigDecimal(sets[2].toString()).doubleValue()) {
 									if(!((Map<Integer, Boolean>)(object.get("recordRows"))).containsKey(count)) {
-										processkernel(row, readDBTableRowIndexCulumnFile, readDBTableRowIndexCulumnFile, reader
+										processkernel(row, readDBTableRowIndexCulumnFile
+												, readDBTableRowIndexCulumnFile, reader
 												, row, output, row, rowMap);
 										Map<Integer, Boolean> recordRows = (Map<Integer, Boolean>) object.get("recordRows");
 										recordRows.put(count, true);
 									}
 								}	
 							}
-							if(sets[1].equalsIgnoreCase("==")||sets[1].equalsIgnoreCase("=")||sets[1].equalsIgnoreCase("===")) {
-								if(new BigDecimal(temp.toString()).doubleValue() == new BigDecimal(sets[2].toString()).doubleValue()) {
+							if(sets[1].equalsIgnoreCase("==")||sets[1].equalsIgnoreCase("=")
+									||sets[1].equalsIgnoreCase("===")) {
+								if(new BigDecimal(temp.toString()).doubleValue() 
+										== new BigDecimal(sets[2].toString()).doubleValue()) {
 									if(!((Map<Integer, Boolean>)(object.get("recordRows"))).containsKey(count)) {
-										processkernel(row, readDBTableRowIndexCulumnFile, readDBTableRowIndexCulumnFile, reader
+										processkernel(row, readDBTableRowIndexCulumnFile
+												, readDBTableRowIndexCulumnFile, reader
 												, row, output, row, rowMap);
 										Map<Integer, Boolean> recordRows = (Map<Integer, Boolean>) object.get("recordRows");
 										recordRows.put(count, true);
@@ -304,9 +327,11 @@ public class ProcessConditionPLSQL {
 							}
 							if(sets[1].equalsIgnoreCase(">=")||sets[1].equalsIgnoreCase("=>") 
 									||sets[1].equalsIgnoreCase("-gte")) {
-								if(new BigDecimal(temp.toString()).doubleValue() >= new BigDecimal(sets[2].toString()).doubleValue()) {
+								if(new BigDecimal(temp.toString()).doubleValue() 
+										>= new BigDecimal(sets[2].toString()).doubleValue()) {
 									if(!((Map<Integer, Boolean>)(object.get("recordRows"))).containsKey(count)) {
-										processkernel(row, readDBTableRowIndexCulumnFile, readDBTableRowIndexCulumnFile, reader
+										processkernel(row, readDBTableRowIndexCulumnFile
+												, readDBTableRowIndexCulumnFile, reader
 												, row, output, row, rowMap);
 										Map<Integer, Boolean> recordRows = (Map<Integer, Boolean>) object.get("recordRows");
 										recordRows.put(count, true);
@@ -314,9 +339,11 @@ public class ProcessConditionPLSQL {
 								}	
 							}
 							if(sets[1].equalsIgnoreCase(">")||sets[1].equalsIgnoreCase("-gt")) {
-								if(new BigDecimal(temp.toString()).doubleValue() > new BigDecimal(sets[2].toString()).doubleValue()) {
+								if(new BigDecimal(temp.toString()).doubleValue() 
+										> new BigDecimal(sets[2].toString()).doubleValue()) {
 									if(!((Map<Integer, Boolean>)(object.get("recordRows"))).containsKey(count)) {
-										processkernel(row, readDBTableRowIndexCulumnFile, readDBTableRowIndexCulumnFile, reader
+										processkernel(row, readDBTableRowIndexCulumnFile
+												, readDBTableRowIndexCulumnFile, reader
 												, row, output, row, rowMap);
 										Map<Integer, Boolean> recordRows = (Map<Integer, Boolean>) object.get("recordRows");
 										recordRows.put(count, true);
@@ -324,9 +351,11 @@ public class ProcessConditionPLSQL {
 								}	
 							}
 							if(sets[1].equalsIgnoreCase("!=")||sets[1].equalsIgnoreCase("=!")) {
-								if(new BigDecimal(temp.toString()).doubleValue() != new BigDecimal(sets[2].toString()).doubleValue()) {
+								if(new BigDecimal(temp.toString()).doubleValue()
+										!= new BigDecimal(sets[2].toString()).doubleValue()) {
 									if(!((Map<Integer, Boolean>)(object.get("recordRows"))).containsKey(count)) {
-										processkernel(row, readDBTableRowIndexCulumnFile, readDBTableRowIndexCulumnFile, reader
+										processkernel(row, readDBTableRowIndexCulumnFile
+												, readDBTableRowIndexCulumnFile, reader
 												, row, output, row, rowMap);
 										Map<Integer, Boolean> recordRows = (Map<Integer, Boolean>) object.get("recordRows");
 										recordRows.put(count, true);
@@ -337,9 +366,11 @@ public class ProcessConditionPLSQL {
 								String rowCellFromString = temp.toString();
 								if(rowCellFromString.equalsIgnoreCase(sets[2].toString())) {
 									if(!((Map<Integer, Boolean>)(object.get("recordRows"))).containsKey(count)) {
-										processkernel(row, readDBTableRowIndexCulumnFile, readDBTableRowIndexCulumnFile, reader
+										processkernel(row, readDBTableRowIndexCulumnFile
+												, readDBTableRowIndexCulumnFile, reader
 												, row, output, row, rowMap);
-										Map<Integer, Boolean> recordRows = (Map<Integer, Boolean>) object.get("recordRows");
+										Map<Integer, Boolean> recordRows 
+										= (Map<Integer, Boolean>) object.get("recordRows");
 										recordRows.put(count, true);
 									}
 								}	
@@ -359,8 +390,10 @@ public class ProcessConditionPLSQL {
 								String rowCellFromString = temp.toString();
 								String set = "," + sets[2] + ",";
 								if(set.contains("," + rowCellFromString + ",")) {
-									if(!((Map<Integer, Boolean>)(object.get("recordRows"))).containsKey(count)) {
-										processkernel(row, readDBTableRowIndexCulumnFile, readDBTableRowIndexCulumnFile, reader
+									if(!((Map<Integer, Boolean>)(object.get("recordRows")))
+											.containsKey(count)) {
+										processkernel(row, readDBTableRowIndexCulumnFile
+												, readDBTableRowIndexCulumnFile, reader
 												, row, output, row, rowMap);
 										Map<Integer, Boolean> recordRows = (Map<Integer, Boolean>) object.get("recordRows");
 										recordRows.put(count, true);
@@ -372,9 +405,11 @@ public class ProcessConditionPLSQL {
 								String set = "," + sets[2] + ",";
 								if(!set.contains("," + rowCellFromString + ",")) {
 									if(!((Map<Integer, Boolean>)(object.get("recordRows"))).containsKey(count)) {
-										processkernel(row, readDBTableRowIndexCulumnFile, readDBTableRowIndexCulumnFile, reader
+										processkernel(row, readDBTableRowIndexCulumnFile
+												, readDBTableRowIndexCulumnFile, reader
 												, row, output, row, rowMap);
-										Map<Integer, Boolean> recordRows = (Map<Integer, Boolean>) object.get("recordRows");
+										Map<Integer, Boolean> recordRows 
+										= (Map<Integer, Boolean>) object.get("recordRows");
 										recordRows.put(count, true);
 									}
 								}	

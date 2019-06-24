@@ -42,8 +42,10 @@ public class RestMapVision {
 		vPCSResponse.getSleeperHall().removeThreadById(vPCSResponse.getHashCode());
 	}
 
-	public static void processRest(VPCSRequest vPCSRequest, VPCSResponse vPCSResponse) throws Exception {
-		String output = VPC.forward(vPCSRequest.getRequestLink(), vPCSRequest.getRequestValue());
+	public static void processRest(VPCSRequest vPCSRequest
+			, VPCSResponse vPCSResponse) throws Exception {
+		String output = VPC.forward(vPCSRequest.getRequestLink()
+				, vPCSRequest.getRequestValue());
 		PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(vPCSResponse.getSocket()
 				.getOutputStream(),StableData.CHARSET_UTF_8)),true);
 		pw.println("HTTP/1.1 200 OK\n\n"); 
@@ -62,7 +64,8 @@ public class RestMapVision {
 
 	}
 
-	public static void processBytes(VPCSRequest vPCSRequest, VPCSResponse vPCSResponse) throws IOException {
+	public static void processBytes(VPCSRequest vPCSRequest
+			, VPCSResponse vPCSResponse) throws IOException {
 		List<byte[]> list;
 		DataOutputStream dataOutputStream = new DataOutputStream(vPCSResponse.getSocket().getOutputStream());
 		if(null != DetaCacheManager.getCacheOfBytesList(vPCSRequest.getRequestFilePath())){
@@ -102,7 +105,8 @@ public class RestMapVision {
 		dataOutputStream.close();
 	}
 
-	public static void processBuffer(VPCSRequest vPCSRequest, VPCSResponse vPCSResponse) throws IOException {
+	public static void processBuffer(VPCSRequest vPCSRequest
+			, VPCSResponse vPCSResponse) throws IOException {
 		String builderToString;
 		if(null != DetaCacheManager.getCacheOfString(vPCSRequest.getRequestFilePath())){
 			builderToString = DetaCacheManager.getCacheOfString(vPCSRequest.getRequestFilePath());
@@ -131,8 +135,8 @@ public class RestMapVision {
 		bufferedWriter.close();	
 	}
 
-	public static void processBufferBytes(VPCSRequest vPCSRequest, VPCSResponse vPCSResponse) 
-			throws UnsupportedEncodingException, IOException {
+	public static void processBufferBytes(VPCSRequest vPCSRequest
+			, VPCSResponse vPCSResponse) throws UnsupportedEncodingException, IOException {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(StableData.HEADER_HTTP_200_OK);
 		stringBuilder.append(StableData.HEADER_HOST);
@@ -142,10 +146,12 @@ public class RestMapVision {
 		String builderToString = stringBuilder.toString();
 		String contentBuilderToString;
 		if(null != DetaCacheManager.getCacheOfString(vPCSRequest.getRequestFilePath())){
-			contentBuilderToString = DetaCacheManager.getCacheOfString(vPCSRequest.getRequestFilePath());
+			contentBuilderToString = DetaCacheManager
+					.getCacheOfString(vPCSRequest.getRequestFilePath());
 		}else{
 			StringBuilder contentBuilder = new StringBuilder();
-			FileInputStream fileInputStream = new FileInputStream(new File(vPCSRequest.getRequestFilePath()));
+			FileInputStream fileInputStream = new FileInputStream(new File(vPCSRequest
+					.getRequestFilePath()));
 			int lengthOfFile = StableData.INT_ZERO;
 			byte[] byteArray = new byte[StableData.BUFFER_RANGE_MAX];
 			while ((lengthOfFile = fileInputStream.read(byteArray)) != StableData.INT_MINES_ONE){

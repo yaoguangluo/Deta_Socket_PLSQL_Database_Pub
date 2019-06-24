@@ -15,9 +15,10 @@ public class RequestRecordController {
 		vPCSRequest.setRequestName(vPCSResponse.getSocket().getInetAddress().getHostName());
 	}
 
-	public static void requestLinkRecoder(VPCSRequest vPCSRequest, VPCSResponse vPCSResponse) throws Exception {
-		BufferedReader br = new BufferedReader(new InputStreamReader(vPCSResponse.getSocket().getInputStream()
-				, StableData.CHARSET_GBK));
+	public static void requestLinkRecoder(VPCSRequest vPCSRequest, VPCSResponse vPCSResponse)
+			throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(vPCSResponse.getSocket()
+				.getInputStream(), StableData.CHARSET_GBK));
 		String mess = br.readLine();
 		if(null == mess){
 			vPCSResponse.returnErrorCode(StableData.HTTP_400);
@@ -48,7 +49,8 @@ public class RequestRecordController {
 			Map<String, String> data = new ConcurrentHashMap<>();
 			for(String cell:column){
 				String[] cells = cell.split(StableData.MATH_EQUAL);
-				data.put(cells[StableData.INT_ZERO], URLDecoder.decode(cells[StableData.INT_ONE], StableData.CHARSET_UTF_8));
+				data.put(cells[StableData.INT_ZERO], URLDecoder.decode(cells[StableData.INT_ONE]
+						, StableData.CHARSET_UTF_8));
 			}
 			vPCSRequest.setRequestValue(data);	
 		}

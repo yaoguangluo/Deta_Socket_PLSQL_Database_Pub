@@ -19,7 +19,8 @@ public class ServerInitController {
 	static {
 		properties = new Properties();
 		try {
-			properties.load(new FileInputStream(new File("src/main/resources/property.proterties")));
+			properties.load(new FileInputStream
+					(new File("src/main/resources/property.proterties")));
 			System.out.println("----德塔VPCS数据库服务器资源载入:成功！");
 		}catch (IOException e) {
 			e.printStackTrace();
@@ -39,8 +40,10 @@ public class ServerInitController {
 			System.out.println("----德塔VPCS数据库服务器启动整库过程映射服务:成功！");
 			DatabaseLogHall.createBinLogHall();
 			System.out.println("----德塔VPCS数据库服务器启动整库过程映射服务:成功！");
-			//			BootBackup.bootBackupByUsingGzip(CacheManager.getCacheInfo("LogPath").getValue().toString()+"/zipCover");
-			//			UnZip.unZipWithPath("C:/DetaLog/zipCover/zip_1549583065203.zip", "C:/DetaLog/zipCover/cover");
+			//			BootBackup.bootBackupByUsingGzip(CacheManager
+			//.getCacheInfo("LogPath").getValue().toString()+"/zipCover");
+			//			UnZip.unZipWithPath("C:/DetaLog/zipCover/zip_1549583065203.zip"
+			//, "C:/DetaLog/zipCover/cover");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -59,12 +62,14 @@ public class ServerInitController {
 		SleeperHall sleeperHall = new SleeperHall();
 		initService();
 		timeProcess.end();
-		System.out.println("----德塔VPCS数据库服务器启动一切正常-总耗时:" + timeProcess.duration()+ "毫秒");
+		System.out.println("----德塔VPCS数据库服务器启动一切正常-总耗时:" 
+		+ timeProcess.duration()+ "毫秒");
 		while(true){
 			if(sleeperHall.getThreadsCount() < StableData.SLEEPERS_RANGE){
 				Sleeper sleeper = new Sleeper();
 				try {
-					sleeper.hugPillow(sleeperHall, server.accept(), sleeper.hashCode());
+					sleeper.hugPillow(sleeperHall, server.accept()
+							, sleeper.hashCode());
 					sleeper.start();
 				} catch (IOException e) {
 					e.printStackTrace();

@@ -18,11 +18,13 @@ public class RequestFixController {
 
 	}
 
-	public static void requestIpFix(VPCSRequest vPCSRequest, VPCSResponse vPCSResponse) {
+	public static void requestIpFix(VPCSRequest vPCSRequest
+			, VPCSResponse vPCSResponse) {
 
 	}
 
-	public static void requestLinkFix(VPCSRequest vPCSRequest, VPCSResponse vPCSResponse) {
+	public static void requestLinkFix(VPCSRequest vPCSRequest
+			, VPCSResponse vPCSResponse) {
 
 	}
 

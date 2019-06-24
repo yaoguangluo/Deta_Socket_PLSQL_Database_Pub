@@ -19,7 +19,8 @@ import org.lyg.db.plsql.imp.ProcessRelationPLSQL;
 import org.lyg.db.reflection.Spec;
 @SuppressWarnings({"unused", "unchecked"})
 public class SelectNestRowsImp {
-	public static Object selectRowsByAttributesOfNestCondition(Map<String, Object> object) throws IOException {
+	public static Object selectRowsByAttributesOfNestCondition(Map<String
+			, Object> object) throws IOException {
 		if(!object.containsKey("recordRows")) {
 			Map<String, Boolean> recordRows = new ConcurrentHashMap<>();
 			object.put("recordRows", recordRows);
@@ -29,7 +30,8 @@ public class SelectNestRowsImp {
 		String objectType = "";
 		List<Map<String, Object>> output = new ArrayList<>();
 		//锁定数据库
-		String DBPath = CacheManager.getCacheInfo("DBPath").getValue().toString() + "/" + object.get("nestBaseName").toString();
+		String DBPath = CacheManager.getCacheInfo("DBPath").getValue().toString() + "/" 
+		+ object.get("nestBaseName").toString();
 		//锁定表
 		File fileDBPath = new File(DBPath);
 		if (fileDBPath.isDirectory()) {
@@ -42,7 +44,8 @@ public class SelectNestRowsImp {
 					//读取列数据格式
 					String[] fileList = fileDBTableCulumn.list();
 					for(int i=0; i<fileList.length; i++) {
-						File readDBTableSpecCulumnFile = new File(DBTableCulumnPath + "/" + fileList[0] + "/value.lyg");
+						File readDBTableSpecCulumnFile = new File(DBTableCulumnPath + "/" 
+					+ fileList[0] + "/value.lyg");
 						BufferedReader reader = new BufferedReader(new FileReader(readDBTableSpecCulumnFile));  
 						String tempString = null;
 						while ((tempString = reader.readLine()) != null) {  
@@ -63,7 +66,8 @@ public class SelectNestRowsImp {
 							if(overMap && andMap) {
 								ProcessConditionPLSQL.processMap(sets, output, DBTablePath);
 							}else if(DetaDBBufferCacheManager.dbCache){
-								ProcessConditionPLSQL.processCache(sets, output, object.get("nestTableName").toString()
+								ProcessConditionPLSQL.processCache(sets, output
+										, object.get("nestTableName").toString()
 										, object.get("nestBaseName").toString(), object);
 							}else {
 								ProcessConditionPLSQL.processTable(sets, output, DBTablePath, object);
@@ -136,9 +140,10 @@ public class SelectNestRowsImp {
 			for(int i= 2; i< getRelationValueArray.length; i++) {
 				String[] sets = getRelationValueArray[i].split("\\|");
 				if(overObjMap&& overJoinObjMap&&andMap && i>2) {
-					ProcessRelationPLSQL.processAndMap(sets, obj, joinObj,object, newObj);
+					ProcessRelationPLSQL.processAndMap(sets, obj, joinObj, object, newObj);
 				}else {
-					ProcessRelationPLSQL.processOrMap(sets, obj, joinObj, object, newObj, findinNewObj);
+					ProcessRelationPLSQL.processOrMap(sets, obj, joinObj, object
+							, newObj, findinNewObj);
 				}
 			}
 		}

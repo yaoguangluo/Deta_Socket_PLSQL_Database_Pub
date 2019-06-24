@@ -69,7 +69,8 @@ public class UpdateRowsImp {
 		return output;
 	}
 
-	public static Map<String, Object> updateRowByTablePathAndAttribute(String tablePath, String culumnName, String culumnValue,
+	public static Map<String, Object> updateRowByTablePathAndAttribute(String tablePath
+			, String culumnName, String culumnValue,
 			JSONObject jobj) throws IOException {
 		String[] sets = tablePath.split("/");
 		File fileDBTable = new File(tablePath);
@@ -130,7 +131,8 @@ public class UpdateRowsImp {
 	}
 
 	public static Object updateRowsByRecordConditions(Map<String, Object> object, boolean mod) throws IOException {
-		String DBPath = CacheManager.getCacheInfo("DBPath").getValue().toString() + "/" + object.get("baseName").toString();
+		String DBPath = CacheManager.getCacheInfo("DBPath").getValue().toString() + "/" 
+	+ object.get("baseName").toString();
 		String DBtablePath = DBPath + "/" + object.get("tableName").toString();
 		String DBTableRowsPath = DBtablePath + "/rows";		
 		List<Map<String, Object>> updateObj = (List<Map<String, Object>>)object.get("updateObj");
@@ -173,7 +175,8 @@ public class UpdateRowsImp {
 		return object;
 	}
 
-	public static Object updateRowsByAttributesOfCondition(Map<String, Object> object, boolean mod) throws IOException {
+	public static Object updateRowsByAttributesOfCondition(Map<String, Object> object
+			, boolean mod) throws IOException {
 		if(!object.containsKey("recordRows")) {
 			Map<String, Boolean> recordRows = new ConcurrentHashMap<>();
 			object.put("recordRows", recordRows);
@@ -183,7 +186,8 @@ public class UpdateRowsImp {
 		String objectType = "";
 		List<Map<String, Object>> output = new ArrayList<>();
 		//锁定数据库
-		String DBPath = CacheManager.getCacheInfo("DBPath").getValue().toString() + "/" + object.get("baseName").toString();
+		String DBPath = CacheManager.getCacheInfo("DBPath").getValue().toString() + "/" 
+		+ object.get("baseName").toString();
 		//锁定表
 		File fileDBPath = new File(DBPath);
 		if (fileDBPath.isDirectory()) {
@@ -196,7 +200,8 @@ public class UpdateRowsImp {
 					//读取列数据格式
 					String[] fileList = fileDBTableCulumn.list();
 					for(int i=0; i<fileList.length; i++) {
-						File readDBTableSpecCulumnFile = new File(DBTableCulumnPath + "/" + fileList[0]+"/value.lyg");
+						File readDBTableSpecCulumnFile = new File(DBTableCulumnPath + "/" 
+					+ fileList[0]+"/value.lyg");
 						BufferedReader reader = new BufferedReader(new FileReader(readDBTableSpecCulumnFile));  
 						String tempString = null;
 						while ((tempString = reader.readLine()) != null) {  
@@ -217,7 +222,8 @@ public class UpdateRowsImp {
 							if(overMap && andMap) {
 								ProcessConditionPLSQL.processMap(sets, output, DBTablePath);
 							}else if(DetaDBBufferCacheManager.dbCache){
-								ProcessConditionPLSQL.processCache(sets, output, object.get("tableName").toString()
+								ProcessConditionPLSQL.processCache(sets, output
+										, object.get("tableName").toString()
 										, object.get("baseName").toString(), object);
 							}else {
 								ProcessConditionPLSQL.processTable(sets, output, DBTablePath, object);

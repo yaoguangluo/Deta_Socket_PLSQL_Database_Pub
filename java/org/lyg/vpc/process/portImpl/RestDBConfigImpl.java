@@ -7,7 +7,8 @@ import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Map;
 public class RestDBConfigImpl {
-	public static Map<String, String> setDBPath(String basePath, String token, String auth) throws Exception {
+	public static Map<String, String> setDBPath(String basePath
+			, String token, String auth) throws Exception {
 		Map<String, String> output= new HashMap<String, String>();
 		String checkStatus = LoginServiceImpl.checkTokenStatus(token, "level");
 		if(checkStatus.contains("invalid")&&(auth.contains("1"))) {
@@ -32,15 +33,18 @@ public class RestDBConfigImpl {
 		//Ëø¶¨±í
 		File fileDBPath = new File(basePath);
 		if (fileDBPath.isDirectory()) {
-			output.put("info", "isDirectory" + CacheManager.getCacheInfo("DBPath").getValue().toString());
+			output.put("info", "isDirectory" + CacheManager.getCacheInfo("DBPath")
+			.getValue().toString());
 		}else {
 			fileDBPath.mkdir();
-			output.put("info", "isCreated" + CacheManager.getCacheInfo("DBPath").getValue().toString());
+			output.put("info", "isCreated" + CacheManager.getCacheInfo("DBPath")
+			.getValue().toString());
 		}
 		return output;
 	}
 
-	public static Map<String, String> setDBTable(String tableName, String token, String auth) throws Exception {
+	public static Map<String, String> setDBTable(String tableName, String token
+			, String auth) throws Exception {
 		Map<String, String> output = new HashMap<String, String>();
 		String checkStatus = LoginServiceImpl.checkTokenStatus(token, "level");
 		if(checkStatus.contains("invalid")&&(auth.contains("1"))) {

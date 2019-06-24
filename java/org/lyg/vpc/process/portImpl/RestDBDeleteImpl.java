@@ -8,7 +8,8 @@ import org.lyg.db.delete.imp.DeleteRowsImp;
 import org.lyg.vpc.process.companyImpl.LoginServiceImpl;
 
 public class RestDBDeleteImpl {
-	public static Map<String, Object> deleteRowByTablePathAndIndex(String tablePath, String pageIndex, String token
+	public static Map<String, Object> deleteRowByTablePathAndIndex(String tablePath
+			, String pageIndex, String token
 			, String email, String password, String auth) throws Exception {
 		Map<String, Object> output = new HashMap<String, Object>();
 		if(token != null && !token.equalsIgnoreCase("")){

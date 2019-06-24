@@ -64,7 +64,8 @@ public class RequestFilterController {
 
 	public static void initBlockList() throws IOException {
 		ipBlock = new ConcurrentHashMap<>();
-		FileInputStream fileInputStream = new FileInputStream(new File("src/main/resources/ipBlock.ips")); 
+		FileInputStream fileInputStream = new FileInputStream(
+				new File("src/main/resources/ipBlock.ips")); 
 		InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, "UTF-8"); 
 		BufferedReader bufferedReader = new BufferedReader(inputStreamReader); 
 		String line = null; 
