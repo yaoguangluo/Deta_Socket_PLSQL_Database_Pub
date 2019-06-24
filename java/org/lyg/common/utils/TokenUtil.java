@@ -6,6 +6,7 @@ import org.lyg.vpc.view.UsrToken;
 import java.util.Date;
 
 public class TokenUtil {
+	//引用了中科大的筛子非对称加密论文思想，这里标注下，
 	public static Token getNewTokenFromUsrAndUsrToken(Usr usr, UsrToken usrToken) throws Exception {
 		String key = String.valueOf(Double.valueOf(Math.random() * 10000000).intValue());
 		String mPassword = TokenUtil.getFirstMD5Password(key, usrToken.getuPassword());
