@@ -68,7 +68,7 @@ https://github.com/yaoguangluo/Data_Processor/tree/master/DP
 ######  正在完善功能：基于 VPCS 思想的写操作日志管理系统。
 #####  ![实例](http://progressed.io/bar/90?title=completed)正在完善功能：已完成 并 准备检测  （binlog 函数 数据按时间恢复, 热备方式，按时间戳方式 恢复）。
 
-###### 未完善功能：7种join模式。
+###### 未完善功能：7种join模式。(因申请个人软著，这个join模式思想不采纳，采用最小关联列数据碎片取值然后做处理，因为德塔数据库不是传统关系数据库那样按行锁定处理模式。)
 https://www.codeproject.com/Articles/33052/Visual-Representation-of-SQL-Joins
 ###### 未完善功能：第二次固定变量名称编程规范整体整理。
 ###### 未完善功能：binlog 日志 大数据文件分页。
